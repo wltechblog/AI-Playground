@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "cross-env VITE_DEBUG_TOOLS=\"true\" VITE_PLATFORM_TITLE=\"for Local® Dev™ Mode\" vite",
     "preview": "vite preview",
-    "fetch-build-resources": "node --experimental-strip-types ./build/scripts/fetch-python-package-resources.mts",
-    "prepare-python-env": "node --experimental-strip-types ./build/scripts/prepare-python-env.mts",
-    "patch-nsis-files": "node --experimental-strip-types ./build/scripts/patch-nsis-template.mts",
+    "fetch-build-resources": "node  ./build/scripts/fetch-python-package-resources.mts",
+    "prepare-python-env": "node  ./build/scripts/prepare-python-env.mts",
+    "patch-nsis-files": "node  ./build/scripts/patch-nsis-template.mts",
     "prepare-build": "npm run fetch-build-resources && npm run prepare-python-env",
     "build": "npm run patch-nsis-files && cross-env-shell VITE_PLATFORM_TITLE=\"for Intel® Arc™\" \"vue-tsc && vite build && electron-builder --config build/build-config.json --win --x64 --publish never\"",
     "test": "vitest run",

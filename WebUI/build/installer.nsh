@@ -33,7 +33,7 @@
 
     recoverModels:
         DetailPrint "Recovering model files..."
-        nsExec::ExecToLog '"$INSTDIR\resources\prototype-python-env\python.exe" "$INSTDIR\resources\service\tools\move_model_files.py" "$2" "$INSTDIR\resources\service\models"'
+        nsExec::ExecToLog '"python" "$INSTDIR\resources\service\tools\move_model_files.py" "$2" "$INSTDIR\resources\service\models"'
         Pop $0
         ${if} $0 == 0
           RMDir /r "$2"
@@ -63,9 +63,8 @@
     StrCpy $1 "_model_backup"
     StrCpy $2 "$0$1"
 
-    IfFileExists "$INSTDIR\resources\prototype-python-env\python.exe" 0 slowBackup
     IfFileExists "$INSTDIR\resources\service\tools\move_model_files.py" 0 slowBackup
-    nsExec::ExecToLog '"$INSTDIR\resources\prototype-python-env\python.exe" "$INSTDIR\resources\service\tools\move_model_files.py" "$INSTDIR\resources\service\models" "$2"'
+    nsExec::ExecToLog '"python" "$INSTDIR\resources\service\tools\move_model_files.py" "$INSTDIR\resources\service\models" "$2"'
     Pop $0
     ${if} $0 == 0
       Goto deleteAll

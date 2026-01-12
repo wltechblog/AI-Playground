@@ -147,11 +147,7 @@ function installPip(getPipFile: string): void {
     console.log(`📋 Copied get-pip.py to: ${getPipDest}`)
 
     // Install pip
-    const pythonExe = join(PYTHON_ENV_DIR, 'python.exe')
-    if (!existsSync(pythonExe)) {
-      console.error(`❌ Python executable not found: ${pythonExe}`)
-      process.exit(1)
-    }
+    const pythonExe = 'python'
 
     console.log('⚙️  Running pip installation...')
     execSync(`"${pythonExe}" "${getPipDest}"`, {
