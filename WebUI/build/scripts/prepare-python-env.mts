@@ -138,35 +138,7 @@ import site
  * Install pip in the Python environment
  */
 function installPip(getPipFile: string): void {
-  console.log('📦 Installing pip...')
-
-  try {
-    // Copy get-pip.py to Python environment
-    const getPipDest = join(PYTHON_ENV_DIR, 'get-pip.py')
-    copyFileSync(getPipFile, getPipDest)
-    console.log(`📋 Copied get-pip.py to: ${getPipDest}`)
-
-    // Install pip
-    const pythonExe = 'python'
-
-    console.log('⚙️  Running pip installation...')
-    execSync(`"${pythonExe}" "${getPipDest}"`, {
-      stdio: 'inherit',
-      cwd: PYTHON_ENV_DIR,
-    })
-    console.log('✅ Pip installed successfully')
-
-    // Install uv package manager
-    console.log('📦 Installing uv package manager...')
-    execSync(`"${pythonExe}" -m pip install uv`, {
-      stdio: 'inherit',
-      cwd: PYTHON_ENV_DIR,
-    })
-    console.log('✅ UV package manager installed successfully')
-  } catch (error) {
-    console.error(`❌ Failed to install pip: ${error}`)
-    process.exit(1)
-  }
+  console.log('📦 Not Installing pip...')
 }
 
 /**
@@ -216,34 +188,5 @@ async function main(): Promise<void> {
   console.log(`📂 Repository Root: ${buildPaths.repoRoot}`)
   console.log(`📂 Target directory: ${buildPaths.pythonEnvDir}`)
 
-  try {
-    // Verify all required files exist
-    const config = verifyFilesExist()
-
-    // Prepare Python environment directory
-    preparePythonEnvDir()
-
-    // Create Python environment from embeddable zip
-    createPythonEnvFromEmbeddableZip(config.pythonEmbedZipFile)
-
-    // Install pip
-    installPip(config.getPipFile)
-
-    // Compress Python environment
-    compressPythonEnvironment()
-
-    console.log('✅ Python environment prepared successfully!')
-    console.log(`📂 Environment available at: ${buildPaths.pythonEnvDir}`)
-  } catch (error) {
-    console.error('❌ Fatal error during Python environment preparation:', error)
-    process.exit(1)
-  }
-}
-
-// Execute main function
-if (normalize(import.meta.url) === normalize(`file://${process.argv[1]}`)) {
-  main().catch((error) => {
-    console.error('❌ Unhandled error:', error)
-    process.exit(1)
-  })
+  console.log(` This stuff doesn't make sense on linux/docker`)
 }
