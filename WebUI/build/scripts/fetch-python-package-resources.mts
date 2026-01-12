@@ -13,11 +13,6 @@ import { normalize } from 'path'
 // Get build paths configuration
 const buildPaths = getBuildPaths()
 const { buildDir: BUILD_DIR, resourcesDir: RESOURCES_DIR } = buildPaths
-const {
-  embeddablePython: EMBEDDABLE_PYTHON_URL,
-  getPipScript: GET_PIP_SCRIPT_URL,
-  sevenZipExe: SEVEN_ZR_EXE_URL,
-} = buildPaths.resourceUrls
 
 interface DownloadResult {
   url: string
@@ -102,34 +97,7 @@ async function main(): Promise<void> {
   console.log('🚀 Starting Python package resources fetch...')
   console.log(`📂 Repository Root: ${buildPaths.repoRoot}`)
   console.log(`📂 Target directory: ${buildPaths.resourcesDir}`)
-
-  try {
-    // Prepare directories
-    prepareDirectories()
-
-    // Download all required files
-    const downloads = await Promise.all([
-      downloadFileIfNotPresent(EMBEDDABLE_PYTHON_URL),
-      downloadFileIfNotPresent(GET_PIP_SCRIPT_URL),
-      downloadFileIfNotPresent(SEVEN_ZR_EXE_URL),
-    ])
-
-    // Check for any download failures
-    const failures = downloads.filter((result) => !result.success)
-    if (failures.length > 0) {
-      console.error('❌ Some downloads failed:')
-      failures.forEach((failure) => {
-        console.error(`  - ${failure.url}: ${failure.error}`)
-      })
-      process.exit(1)
-    }
-
-    console.log('✅ All Python package resources fetched successfully!')
-    console.log(`📂 Resources available in: ${buildPaths.resourcesDir}`)
-  } catch (error) {
-    console.error('❌ Fatal error during resource fetch:', error)
-    process.exit(1)
-  }
+  console.log(` except we don't need to do this`)
 }
 
 // Execute main function

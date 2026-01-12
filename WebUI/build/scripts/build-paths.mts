@@ -49,9 +49,6 @@ export const SHARED_BACKEND_DIR = join(REPO_ROOT, 'backend-shared')
 // Resource file paths
 export const PYTHON_ENV_ARCHIVE = join(RESOURCES_DIR, 'prototype-python-env.7z')
 
-// Resource URLs
-export const EMBEDDABLE_PYTHON_URL =
-  'https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip'
 
 /**
  * Build configuration interface
