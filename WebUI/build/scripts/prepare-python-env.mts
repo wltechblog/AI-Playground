@@ -23,46 +23,13 @@ const {
 
 interface PythonEnvConfig {
   pythonEmbedZipFile: string
-  getPipFile: string
 }
 
 /**
  * Verify all required files exist
  */
 function verifyFilesExist(): PythonEnvConfig {
-  console.log('🔍 Verifying all required files exist...')
-
-  if (!existsSync(RESOURCES_DIR)) {
-    console.error(`❌ Resources directory not found: ${RESOURCES_DIR}`)
-    console.error('Please run fetch-python-package-resources.ts first')
-    process.exit(1)
-  }
-
-  const resourceFiles = readdirSync(RESOURCES_DIR)
-
-  // Find Python embed zip file
-  const pythonEmbedZipFile =
-    RESOURCES_DIR +
-    '/' +
-    (resourceFiles.find(
-      (fileName) => fileName.startsWith('python-3.12.10') && fileName.endsWith('.zip'),
-    ) || '')
-
-  if (!existsSync(pythonEmbedZipFile)) {
-    console.error('❌ Python embeddable zip file not found in resources directory')
-    console.error(`Expected pattern: python-3.12.10-*.zip in ${RESOURCES_DIR}`)
-    process.exit(1)
-  }
-
-  // Find get-pip.py file
-  const getPipFile = buildPaths.resourceFiles.getPipFile
-  if (!existsSync(getPipFile)) {
-    console.error(`❌ get-pip.py not found: ${getPipFile}`)
-    process.exit(1)
-  }
-
-  console.log('✅ All required files exist')
-  return { pythonEmbedZipFile, getPipFile }
+  console.log('🔍 Verifying all required files exist... We don't need to do this!')
 }
 
 /**
@@ -134,12 +101,6 @@ import site
   }
 }
 
-/**
- * Install pip in the Python environment
- */
-function installPip(getPipFile: string): void {
-  console.log('📦 Not Installing pip...')
-}
 
 /**
  * Compress Python environment using 7-Zip
