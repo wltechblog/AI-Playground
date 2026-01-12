@@ -105,7 +105,6 @@ export function getBuildPaths(): BuildPaths {
       sharedBackend: SHARED_BACKEND_DIR,
     },
     resourceFiles: {
-      sevenZipExe: SEVEN_ZIP_EXE,
       getPipFile: GET_PIP_FILE,
       pythonEnvArchive: PYTHON_ENV_ARCHIVE,
     },
