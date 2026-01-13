@@ -29,7 +29,7 @@ interface PythonEnvConfig {
  * Verify all required files exist
  */
 function verifyFilesExist(): PythonEnvConfig {
-  console.log('🔍 Verifying all required files exist... We don't need to do this!')
+  console.log('🔍 Verifying all required files exist... We dont need to do this!')
 }
 
 /**
