@@ -74,11 +74,6 @@ export interface BuildPaths {
     getPipFile: string
     pythonEnvArchive: string
   }
-  resourceUrls: {
-    embeddablePython: string
-    getPipScript: string
-    sevenZipExe: string
-  }
 }
 
 /**
@@ -103,9 +98,6 @@ export function getBuildPaths(): BuildPaths {
     },
     resourceFiles: {
       pythonEnvArchive: PYTHON_ENV_ARCHIVE,
-    },
-    resourceUrls: {
-      embeddablePython: EMBEDDABLE_PYTHON_URL,
     },
   }
 }
