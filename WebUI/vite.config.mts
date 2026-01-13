@@ -102,6 +102,7 @@ export default defineConfig(({ command }) => {
     },
     server: {
       host: '0.0.0.0',
+      allowedHosts: true,
       port: 25413,
       proxy: {
         '^/api/': {
